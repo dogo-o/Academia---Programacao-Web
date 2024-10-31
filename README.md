@@ -1,4 +1,4 @@
-**CRUD 1 - Usuários (Alunos e Profissionais):**
+**CRUD 1 - Usuários:**
 
 **Create:** Cadastrar novos usuários com informações pessoais, login e senha.
 **Read:** Consultar perfil, histórico de treinos, consultas e progresso.
