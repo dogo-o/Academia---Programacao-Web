@@ -4,16 +4,107 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>FitConnect - Home</title>
+    <title>FitConnect - Cadastro</title>
 </head>
 <body>
-    <header><div id="div_img_logo"><img src="logo.png" alt="logo""></div></header>
+    <header>
+        <div id="div_img_logo">
+            <img src="logo.png" alt="logo">
+        </div>
+    </header>
+    <h1 style="margin: 25px; text-align: center;">Crie sua conta.</h1>
     <div id="select_user">
-        <div id="div_btn_usuario"><button id="btn_usuario" class="ativo">Usuário</button></div>
-        <div id="div_btn_nutri"><button id="btn_nutri">Nutricionista</button></div>
-        <div id="div_btn_treinador"><button id="btn_treinador">Treinador</button></div>
+        <button id="btn_usuario" class="ativo">Usuário</button>
+        <button id="btn_nutri">Nutricionista</button>
+        <button id="btn_treinador">Treinador</button>
     </div>
+    <div id="formulario_usuario" class="formulario">
+        <form action="" method="post">
+            <label for="nome">Nome completo:</label>
+            <input type="text" name="nome" id="nome_usuario">
+            <label for="email">Email:</label>
+            <input type="email" name="email">
+            <label for="cpf">CPF:</label>
+            <input type="number" name="cpf">
+            <label for="genero">Gênero:</label>
+            <select name="genero" id="genero">
+                <option value="" disabled selected hidden>Escolha uma opção...</option>
+                <option value="masc" >Masculino</option>
+                <option value="fem">Feminino</option>
+                <option value="nao_responder">Prefiro não responder</option>
+            </select> 
+            <label for="pass">Senha:</label>
+            <input type="text">
+            <button type="submit">Cadastrar-se</button>
+        </form>
+    </div>
+
+    <div id="formulario_nutricionista" class="formulario2">
+        <form action="" method="post">
+            <div class="form-row">
+                <div class="form-col">
+                    <label for="nome_nutri">Nome completo:</label>
+                    <input type="text" name="nome" id="nome_nutri">
+                    <label for="email_nutri">Email:</label>
+                    <input type="email" name="email" id="email_nutri">
+                    <label for="cpf_nutri">CPF:</label>
+                    <input type="number" name="cpf" id="cpf_nutri">
+                    <label for="genero">Gênero:</label>
+                    <select name="genero" id="genero">
+                        <option value="" disabled selected hidden>Escolha uma opção...</option>
+                        <option value="masc" >Masculino</option>
+                        <option value="fem">Feminino</option>
+                        <option value="nao_responder">Prefiro não responder</option>
+                    </select> 
+                </div>
+                <div class="form-col">
+                    <label for="curso_nutri">Curso Superior:</label>
+                    <input type="text" name="curso" id="curso_nutri">
+                    <label for="instituicao_nutri">Instituição:</label>
+                    <input type="text" name="instituicao" id="instituicao_nutri">
+                    <label for="crn">Número CRN:</label>
+                    <input type="text" name="crn" id="crn">
+                    <label for="pass">Senha:</label>
+                    <input type="text">
+                </div>
+            </div>
+            <button type="submit">Cadastrar-se</button>
+        </form>
+    </div>
+
+    <div id="formulario_treinador" class="formulario2">
+        <form action="" method="post">
+            <div class="form-row">
+                <div class="form-col">
+                    <label for="nome_treinador">Nome completo:</label>
+                    <input type="text" name="nome" id="nome_treinador">
+                    <label for="email_treinador">Email:</label>
+                    <input type="email" name="email" id="email_treinador">
+                    <label for="cpf_treinador">CPF:</label>
+                    <input type="number" name="cpf" id="cpf_treinador">
+                    <label for="genero">Gênero:</label>
+                    <select name="genero" id="genero">
+                        <option value="" disabled selected hidden>Escolha uma opção...</option>
+                        <option value="masc" >Masculino</option>
+                        <option value="fem">Feminino</option>
+                        <option value="nao_responder">Prefiro não responder</option>
+                    </select> 
+                </div>
+                <div class="form-col">
+                    <label for="curso_treinador">Curso Superior:</label>
+                    <input type="text" name="curso" id="curso_treinador">
+                    <label for="instituicao_treinador">Instituição:</label>
+                    <input type="text" name="instituicao" id="instituicao_treinador">
+                    <label for="cref">Número CREF:</label>
+                    <input type="text" name="cref" id="cref">
+                    <label for="pass">Senha:</label>
+                    <input type="text">
+                </div>
+            </div>
+            <button type="submit">Cadastrar-se</button>
+        </form>
+    </div>
+
     <script src="script.js"></script>
-    
 </body>
 </html>
