@@ -11,10 +11,21 @@ function aplicarEstiloAtivo(botao) {
 
 function mostrarFormulario(formulario) {
     const idForm = document.getElementById(formulario);
-    for (formularios of forms) {
-        formularios.style.display = 'none';
+    for (form of forms) {
+        form.style.display = 'none';
     }
     idForm.style.display = 'block';
+}
+
+function mostrarSenha() {
+    const senha = document.getElementsByClassName('senha');
+    for (i in senha) {
+        if (senha[i].type === 'password') {
+            senha[i].type = 'text';
+        }else {
+            senha[i].type = 'password';
+        }
+    }
 }
 
 document.getElementById('btn_usuario').addEventListener('click', function() {
@@ -29,5 +40,7 @@ document.getElementById('btn_treinador').addEventListener('click', function() {
     aplicarEstiloAtivo('btn_treinador');
     mostrarFormulario('formulario_treinador');
 });
+
+
 
 
