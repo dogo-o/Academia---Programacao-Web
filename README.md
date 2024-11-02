@@ -33,9 +33,9 @@
 **Update:** Alterar datas e horários de consultas.
 **Delete:** Cancelar ou excluir agendamentos antigos.
 
-**CRUD 6 - Pagamentos e Faturamento:**
+**CRUD 6 -Feedbacks e Avaliações:**
 
-**Create:** Cadastrar novos métodos de pagamento associados aos planos.
-**Read:** Consultar histórico de pagamentos e status de faturas.
-**Update:** Atualizar informações de pagamento.
-**Delete:** Excluir transações inválidas ou vencidas.
+**Create**: Sistema ou usuário pode registrar feedbacks e avaliações.
+**Read**: Área do administrador, onde ele pode visualizar feedbacks e avaliações.
+**Upeate**: Possível atualização de feedbacks e avaliações, se necessário.
+**Delete**: Área do administrador pode remover feedbacks inapropriados ou antigos.
