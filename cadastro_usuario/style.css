@@ -19,8 +19,8 @@ body {
     background-color: rgb(216, 216, 216);
     padding: 15px; 
     width: 430px; 
-    margin-top: 22px;
-    margin-bottom: 17px;
+    margin-top: 5px;
+    margin-bottom: 30px;
     border-radius: 40px;
 }
 
@@ -54,21 +54,21 @@ body {
     padding: 0;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-  }
+}
   
-  .formulario label {
+.formulario label {
     color: white;
     display: block;
     margin: 15px 0 5px;
     font-weight: bold;
-  }
+}
   
-  .formulario input[type="text"],
-  .formulario input[type="email"],
-  .formulario input[type="number"],
-  .formulario input[type="password"],
-  .formulario input[type="date"],
-  .formulario select {
+.formulario input[type="text"],
+.formulario input[type="email"],
+.formulario input[type="number"],
+.formulario input[type="password"],
+.formulario input[type="date"],
+.formulario select {
     background-color: rgb(216, 216, 216);
     width: 100%;
     padding: 10px;
@@ -77,9 +77,9 @@ body {
     border-radius: 8px;
     font-size: 16px;
     box-sizing: border-box; 
-  }
+}
   
-  .formulario button[type="submit"] {
+.formulario button[type="submit"] {
     width: 100%;
     padding: 12px;
     margin-top: 20px;
@@ -91,12 +91,38 @@ body {
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease, border 0.3s ease; 
-  }
+}
 
-  .formulario button[type="submit"]:hover {
+.formulario button[type="submit"]:hover {
     background-color: black;
     border: 1px solid #ff6709; 
-  }
+}
+
+.linha-voltar {
+    display: flex;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    padding: 0 10px;
+}
+
+.linha-voltar h1 {
+    flex-grow: 1;
+    margin: 0;
+}
+
+.linha-voltar button.voltar {
+    position: absolute;
+    left: 0;
+    padding: 2px 10px 2px 10px;
+    background-color: #ff6709;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
 
 
 .formulario2 {
@@ -157,7 +183,44 @@ body {
     border: 1px solid #ff6709; 
 }
 
-.formulario2 {
+#formulario_usuario, #formulario_nutricionista, #formulario_treinador{
     display: none;
 }
 
+
+.div_botao_add {
+    background-color: #ff6709;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 0 75px 0 75px; 
+    border-radius: 10px 10px 0 0;
+}
+
+#table_crud_usuario, #table_crud_nutri, #table_crud_treinador{
+    color: black;
+    background-color: rgb(216, 216, 216);
+    height: 600px;
+    padding: 5px;
+    margin: 0 75px 0 75px; 
+    border-radius: 0 0 10px 10px;
+}
+
+.add {
+    padding: 10px;
+    background-color: #c94d00;
+    color: white;
+    font-size: 19px;
+    font-weight: bold;
+    border: none;
+    border-radius: 0 10px 0 0;
+    cursor: pointer;
+}
+
+
+.crud_naoativo {
+    display: none;
+
+}

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>FitConnect - Cadastro</title>
+    <title>FitConnect - CRUD</title>
 </head>
 <body>
     <header>
@@ -12,14 +12,26 @@
             <img src="logo.png" alt="logo">
         </div>
     </header>
-    <h1 style="margin: 25px; text-align: center;">Crie sua conta.</h1>
     <div id="select_user">
         <button id="btn_usuario" class="ativo">Usuário</button>
         <button id="btn_nutri">Nutricionista</button>
         <button id="btn_treinador">Treinador</button>
     </div>
+    <section id="crud_usuario" class="crud_ativo">
+        <div class="div_botao_add">
+            <h1 style="margin: 0; margin-left: 8px">CRUD USUARIO</h1>
+            <button class="add" id="add_usuario">Adicionar</button>
+        </div>
+        <div id="table_crud_usuario">
+            <table></table>
+        </div>
+    </section>
     <div id="formulario_usuario" class="formulario">
-        <form action="api/cadastrar.php" method="post">
+        <form id="cadastro_usuario">
+            <div class="linha-voltar">
+                <button type="button" id="btn_voltar_form_usuario" class="voltar">⬅ Voltar</button>
+                <h1 style="margin: 0;"> Cadastrar </h1>
+            </div>
             <label for="nome_usuario">Nome completo:</label>
             <input type="text" name="nome_usuario" id="nome_usuario" required>
             <label for="email_usuario">Email:</label>
@@ -39,12 +51,25 @@
             <input type="password" class='senha' name="senha_usuario" required>
             <input type="checkbox" name="check_usuario" class="showpass" onclick="mostrarSenha()">
             <label for="check_usuario" style="font-weight: 400; display: inline;">Mostrar Senha</label>
-            <button type="submit" name="submit">Cadastrar-se</button>
+            <button type="submit" name="submit">Adicionar</button>
+            <div id="responseMessage" style="margin: 20px; text-align: center;"></div>
         </form>
     </div>
-
+    
+    <section id="crud_nutri" class="crud_naoativo">
+        <div class="div_botao_add">
+            <h1 style="margin: 0; margin-left: 8px">CRUD NUTRICIONISTA</h1>
+            <button class="add" id="add_nutri">Adicionar</button>
+        </div>
+        <div id="table_crud_nutri">
+            <table></table>
+        </div>
+    </section>
     <div id="formulario_nutricionista" class="formulario2">
         <form action="" method="post">
+            <div class="linha-voltar">
+                <button type="button" id="btn_voltar_form_nutri" class="voltar">⬅ Voltar</button>
+                <h1 style="margin: 0;"> Cadastrar </h1>            </div>
             <div class="form-row">
                 <div class="form-col">
                     <label for="nome_nutri">Nome completo:</label>
@@ -78,12 +103,23 @@
                     <label for="check_nutri" style="font-weight: 400; display: inline;">Mostrar Senha</label>
                 </div>
             </div>
-            <button type="submit">Cadastrar-se</button>
+            <button type="submit">Adicionar</button>
         </form>
     </div>
-
+    <section id="crud_treinador" class="crud_naoativo">
+        <div class="div_botao_add">
+            <h1 style="margin: 0; margin-left: 8px">CRUD TREINADOR</h1>
+            <button class="add" id="add_treinador">Adicionar</button>
+        </div>
+        <div id="table_crud_treinador">
+            <table></table>
+        </div>
+    </section>
     <div id="formulario_treinador" class="formulario2">
         <form action="" method="post">
+            <div class="linha-voltar">
+                <button type="button" id="btn_voltar_form_treinador" class="voltar">⬅ Voltar</button>
+                <h1 style="margin: 0;"> Cadastrar </h1>            </div>
             <div class="form-row">
                 <div class="form-col">
                     <label for="nome_treinador">Nome completo:</label>
@@ -117,7 +153,7 @@
                     <label for="check_treinador" style="font-weight: 400; display: inline;">Mostrar Senha</label>
                 </div>
             </div>
-            <button type="submit">Cadastrar-se</button>
+            <button type="submit">Adicionar</button>
         </form>
     </div>
 
