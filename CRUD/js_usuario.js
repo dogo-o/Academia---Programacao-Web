@@ -2,6 +2,7 @@ const botoes = document.querySelectorAll('#btn_usuario, #btn_nutri, #btn_treinad
 const cruds = document.querySelectorAll('#crud_usuario, #crud_nutri, #crud_treinador');
 const forms = document.querySelectorAll('#formulario_usuario, #formulario_nutricionista, #formulario_treinador')
 
+
 function aplicarEstiloAtivo(botao) {
     const idBotao = document.getElementById(botao);
     for (btn of botoes) {
@@ -53,13 +54,44 @@ function voltar(btnVoltar,respective_crud){
     crudUser.style.display = 'block'
 }
 
+function validateForm(){
+    // nome
+    const nome = document.getElementById('id_nome_usuario').value
+    if (!(/^[A-Za-zÀ-ÿ\s]+$/).test(nome)) {
+        document.getElementById('responseMessage').textContent = 'Nome contem caracteres inválidos.'
+        return true
+    }
+
+    // CPF
+    const cpf = document.getElementById('id_cpf_usuario').value
+    if(/[^\d]/g.test(cpf)){
+        document.getElementById('responseMessage').textContent = 'CPF com formato inválido, utilize apenas números.'
+        return true;
+    }else if(cpf.length !== 11){        
+        document.getElementById('responseMessage').textContent = 'CPF com formato inválido, verifique se possui 11 números.'
+        return true
+    }
+
+    // idade
+    const nascimento = document.getElementById('nascimento_usuario').value
+    const data1 = new Date(nascimento)
+    const datanow = new Date()
+    const data3 = new Date('1900-01-01')
+    if(data1 > datanow || data1 < data3){
+        document.getElementById('responseMessage').textContent = 'Data inválida.'
+        return true
+    }}
+
 
 //fetch - formulario
 
 document.getElementById('cadastro_usuario').addEventListener('submit', function(event) {
     event.preventDefault();
-    console.log('Formulário enviado');
-    
+
+    if(validateForm()){
+        return
+    }
+
     const formData = new FormData(this);
     
     fetch('cadastrar_usuario.php', {  
@@ -69,41 +101,47 @@ document.getElementById('cadastro_usuario').addEventListener('submit', function(
     .then(response => {return response.text(); 
     })
     .then(data => {
-        document.getElementById('responseMessage').innerHTML = data;
+        const resposta = document.getElementById('responseMessage')
+        resposta.innerHTML = ''
+        resposta.innerHTML = data
+        if (data.includes("sucesso")) {
+            clearForm()
+        }
     })
     .catch(error => {
         console.error('Erro:', error); 
     });
 });
 
-// 
-
-document.addEventListener("DOMContentLoaded", function() {
-    fetchUsers();
-});
-
-function fetchUsers() {
-    fetch('ler_usuarios.php')
-        .then(response => response.json())
-        .then(data => {
-            populateTable(data);
-        })
-        .catch(error => console.error("Erro na requisição:", error));
+function clearForm(){
+    const inputs = document.querySelectorAll('input')
+    for(x of inputs){
+        x.value = ''
+    }
 }
 
-function populateTable(users) {
+// fetch - READ
+fetch('ler_usuarios.php') // -> requisicao GET
+    .then(response => response.json())
+    .then(data => {
+        populateTableUsuario(data);
+    })
+    .catch(error => console.error("Erro na requisição:", error));
+
+
+function populateTableUsuario(users) {
     const tableBody = document.querySelector("#table_usuario tbody");
     tableBody.innerHTML = "";
 
-    users.forEach(user => {
+    for (const user of users) {
         const row = document.createElement("tr");
 
         const idCell = document.createElement("td");
-        idCell.textContent = user.id_usuario;
+        idCell.textContent = user["id_usuario"];
         row.appendChild(idCell);
 
         const nameCell = document.createElement("td");
-        nameCell.textContent = user.nome_usuario;
+        nameCell.textContent = user['nome_usuario']; 
         row.appendChild(nameCell);
 
         const emailCell = document.createElement("td");
@@ -126,20 +164,20 @@ function populateTable(users) {
         deleteCell.style.textAlign = 'center';
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "Excluir";
-        deleteButton.onclick = () => deleteUser(user.id_usuario); // Função deleteUser a ser implementada
+        deleteButton.onclick = () => deleteUser(user.id_usuario);
         deleteCell.appendChild(deleteButton);
-        row.appendChild(deleteCell);
+        row.appendChild(deleteCell);    
 
         const editCell = document.createElement("td");
         editCell.style.textAlign = 'center';
         const editButton = document.createElement("button");
         editButton.textContent = "Editar";
-        editButton.onclick = () => editUser(user.id_usuario); // Função editUser a ser implementada
+        editButton.onclick = () => editUser(user.id_usuario);
         editCell.appendChild(editButton);
         row.appendChild(editCell);
 
         tableBody.appendChild(row);
-    });
+    }
 }
 
 

@@ -31,7 +31,7 @@
                         <th>Email</th>
                         <th>CPF</th>
                         <th>Nascimento</th>
-                        <th>Genero</th>
+                        <th>Gênero</th>
                         <th style="text-align: center;">Excluir</th>
                         <th style="text-align: center;">Editar</th>
                     </tr>
@@ -48,22 +48,22 @@
                 <h1 style="margin: 0;"> Cadastrar </h1>
             </div>
             <label for="nome_usuario">Nome completo:</label>
-            <input type="text" name="nome_usuario" id="nome_usuario" required>
+            <input type="text" name="nome_usuario" id="id_nome_usuario" required minlength="3">
             <label for="email_usuario">Email:</label>
             <input type="email" name="email_usuario" required>
             <label for="cpf_usuario">CPF:</label>
-            <input type="number" name="cpf_usuario" required>
+            <input type="text" name="cpf_usuario" id='id_cpf_usuario'required>
             <label for="nascimento_usuario">Data de Nascimento:</label>
-            <input type="date" name="nascimento_usuario" required>
+            <input type="date" name="nascimento_usuario" required id="nascimento_usuario">
             <label for="genero_usuario">Gênero:</label>
             <select name="genero_usuario" id="genero_usuario" required>
                 <option value="" disabled selected hidden>Escolha uma opção...</option>
                 <option value="M">Masculino</option>
                 <option value="F">Feminino</option>
-                <option value="N">Prefiro não responder</option>
+                <option value="Ñ">Prefiro não responder</option>
             </select>
             <label for="senha_usuario">Senha:</label>
-            <input type="password" class='senha' name="senha_usuario" required>
+            <input type="password" class='senha' name="senha_usuario" required minlength="8">
             <input type="checkbox" name="check_usuario" class="showpass" onclick="mostrarSenha()">
             <label for="check_usuario" style="font-weight: 400; display: inline;">Mostrar Senha</label>
             <button type="submit" name="submit">Adicionar</button>
@@ -77,28 +77,33 @@
             <button class="add" id="add_nutri">Adicionar</button>
         </div>
         <div id="table_crud_nutri">
-            <table>
-                <tr>
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>CPF</th>
-                    <th>Telefone</th>
-                    <th>Nascimento</th>
-                    <th>Genero</th>
-                    <th>Curso</th>
-                    <th>Instituição</th>
-                    <th>CRN</th>
-                    <th style="text-align: center;">Excluir</th>
-                    <th style="text-align: center;">Editar</th>
-                </tr>
+            <table id="table_nutri">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>CPF</th>
+                        <th>Telefone</th>
+                        <th>Nascimento</th>
+                        <th>Genero</th>
+                        <th>Curso</th>
+                        <th>Instituição</th>
+                        <th>CRN</th>
+                        <th style="text-align: center;">Excluir</th>
+                        <th style="text-align: center;">Editar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
             </table>
         </div>
     </section>
     <div id="formulario_nutricionista" class="formulario2">
-        <form action="" method="post">
+        <form id="cadastro_nutri">
             <div class="linha-voltar">
                 <button type="button" id="btn_voltar_form_nutri" class="voltar">⬅ Voltar</button>
-                <h1 style="margin: 0;"> Cadastrar </h1>            </div>
+                <h1 style="margin: 0;"> Cadastrar </h1></div>
             <div class="form-row">
                 <div class="form-col">
                     <label for="nome_nutri">Nome completo:</label>
@@ -108,31 +113,32 @@
                     <label for="cpf_nutri">CPF:</label>
                     <input type="number" name="cpf_nutri" id="cpf_nutri" required>
                     <label for="telefone_nutri">Telefone:</label>
-                    <input type="number" name="telefone_nutri" required>
+                    <input type="number" name="telefone_nutri" id="telefone_nutri" required>
                     <label for="nascimento_nutri">Data de Nascimento:</label>
-                    <input type="date" name="nascimento_nutri" required>
+                    <input type="date" name="nascimento_nutri" id="nascimento_nutri" required>
                 </div>
                 <div class="form-col">
                     <label for="genero_nutri">Gênero:</label>
                     <select name="genero_nutri" id="genero_nutri" required>
                         <option value="" disabled selected hidden>Escolha uma opção...</option>
-                        <option value="masc">Masculino</option>
-                        <option value="fem">Feminino</option>
-                        <option value="nao_responder">Prefiro não responder</option>
+                        <option value="M">Masculino</option>
+                        <option value="F">Feminino</option>
+                        <option value="Ñ">Prefiro não responder</option>
                     </select> 
                     <label for="curso_nutri">Curso Superior:</label>
                     <input type="text" name="curso_nutri" id="curso_nutri" required>
                     <label for="instituicao_nutri">Instituição:</label>
                     <input type="text" name="instituicao_nutri" id="instituicao_nutri" required>
                     <label for="crn">Número CRN:</label>
-                    <input type="text" name="crn" id="crn" required>
+                    <input type="number" name="crn" id="crn" required>
                     <label for="senha_nutri">Senha:</label>
-                    <input type="password" class='senha' name="senha_nutri" required>
+                    <input type="password" class='senha' name="senha_nutri" required minlength="8" maxlength="20">
                     <input type="checkbox" name="check_nutri" class="showpass" onclick="mostrarSenha()">
                     <label for="check_nutri" style="font-weight: 400; display: inline;">Mostrar Senha</label>
                 </div>
             </div>
             <button type="submit">Adicionar</button>
+            <div id="responseMessage2" style="margin: 20px; text-align: center;"></div>
         </form>
     </div>
     <section id="crud_treinador" class="crud_naoativo">
@@ -182,9 +188,9 @@
                     <label for="genero_treinador">Gênero:</label>
                     <select name="genero_treinador" id="genero_treinador" required>
                         <option value="" disabled selected hidden>Escolha uma opção...</option>
-                        <option value="masc">Masculino</option>
-                        <option value="fem">Feminino</option>
-                        <option value="nao_responder">Prefiro não responder</option>
+                        <option value="M">Masculino</option>
+                        <option value="F">Feminino</option>
+                        <option value="Ñ">Prefiro não responder</option>
                     </select> 
                     <label for="curso_treinador">Curso Superior:</label>
                     <input type="text" name="curso_treinador" id="curso_treinador" required>
@@ -202,6 +208,8 @@
         </form>
     </div>
 
-    <script src="script.js"></script>
+    <script src="js_usuario.js"></script>
+    <script src="js_nutri.js"></script>
+    <script src="js_treinador.js"></script>
 </body>
 </html>

@@ -5,18 +5,18 @@ if ($conexao->connect_error) {
     die(json_encode(['error' => 'Falha na conexão: ' . $conexao->connect_error]));
 }
 
-$sql = "SELECT * FROM usuarios";
+$sql = "SELECT * FROM nutricionistas";
 $result = $conexao->query($sql);
 
-$users = [];
+$nutris = [];
 
 if ($result) {
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            $users[] = $row;
+            $nutris[] = $row;
         }
     }
-    echo json_encode($users);
+    echo json_encode($nutris);
 }
 
 $conexao->close();
