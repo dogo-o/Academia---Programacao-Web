@@ -36,19 +36,19 @@ function validateForm2(){
 //fetch - formulario
  
 document.getElementById('cadastro_nutri').addEventListener('submit', function(event) {
-    event.preventDefault();
+    event.preventDefault(); // utiliza function(event) para poder usar this no formData
 
     if(validateForm2()){
         return
     }
     
-    const formData = new FormData(this);
+    const formData = new FormData(this); // referencia o formulario atual
     
     fetch('cadastrar_nutricionista.php', {  
         method: 'POST',
         body: formData
     })
-    .then(response => {return response.text(); 
+    .then(response => {return response.text(); //
     })
     .then(data => {
         const resposta = document.getElementById('responseMessage2')

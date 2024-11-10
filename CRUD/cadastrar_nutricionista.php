@@ -1,12 +1,16 @@
 <?php 
 include 'config.php';
 
+if ($conexao->connect_error) {
+    die('Falha na conexão tente novamente: ' . $conexao->connect_error); // utiliza-se die para nao continuar o codigo
+}
+
 // Coleta os valores do formulário
 $nome_nutri = $_POST['nome_nutri'];
 $email_nutri = $_POST['email_nutri'];
 $cpf_nutri = $_POST['cpf_nutri'];
 $telefone_nutri = $_POST['telefone_nutri'];
-$nascimento_nutri = $_POST['nascimento_nutri'];  // Corrigido
+$nascimento_nutri = $_POST['nascimento_nutri']; 
 $genero_nutri = $_POST['genero_nutri'];
 $curso_nutri = $_POST['curso_nutri'];
 $instituicao_nutri = $_POST['instituicao_nutri'];
@@ -17,7 +21,7 @@ $senha_nutri_hash = password_hash($senha_nutri, PASSWORD_DEFAULT); // Criptograf
 // Verifica se o CPF já está cadastrado
 $sql_verify_cpf = 'SELECT CPF_nutri FROM academia.nutricionistas WHERE CPF_nutri = ?';
 $stmt_cpf = $conexao->prepare($sql_verify_cpf);
-$stmt_cpf->bind_param('s', $cpf_nutri);  // Corrigido
+$stmt_cpf->bind_param('s', $cpf_nutri);  
 $stmt_cpf->execute();
 $result_cpf = $stmt_cpf->get_result();
 
