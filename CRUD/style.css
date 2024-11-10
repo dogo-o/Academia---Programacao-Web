@@ -200,12 +200,21 @@ body {
 }
 
 #table_crud_usuario, #table_crud_nutri, #table_crud_treinador{
+    height: auto; 
+    min-height: 400px; 
+    max-height: 600px; 
+    overflow-y: auto; 
     color: black;
     background-color: rgb(216, 216, 216);
-    height: 600px;
     padding: 15px;
     margin: 0 75px 0 75px; 
     border-radius: 0 0 10px 10px;
+}
+
+@media (max-width: 1280px) and (max-height: 720px) {
+    #table_crud_usuario, #table_crud_nutri, #table_crud_treinador{
+        min-height: 80vh;
+    }    
 }
 
 .add {

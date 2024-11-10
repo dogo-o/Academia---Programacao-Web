@@ -63,14 +63,37 @@ document.getElementById('cadastro_nutri').addEventListener('submit', function(ev
     });
 });
 
+function deletarNutri(id_nutri) {
+    let ctz = confirm('Tem certeza que deseja excluir?')
+    if(ctz){
+    fetch('excluirNutri.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ id_nutri })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            lerNutri();
+        } else {
+            alert("Erro ao excluir nutricionista!");
+        }
+    })
+    .catch(error => console.log('Erro ao excluir nutricionista: ' + error));
+}
+}
 
+function lerNutri(){
 fetch('ler_nutri.php') // -> requisicao GET
     .then(response => response.json())
     .then(data => {
         populateTableNutri(data);
     })
     .catch(error => console.error("Erro na requisição:", error));
-
+}
+lerNutri()
 
 function populateTableNutri(nutris) {
     const tableBody = document.querySelector("#table_nutri tbody");
@@ -107,10 +130,6 @@ function populateTableNutri(nutris) {
         generoCell.textContent = nutri.genero_nutri;
         row.appendChild(generoCell);
 
-        const cursoCell = document.createElement("td");
-        cursoCell.textContent = nutri.curso_superior_nutri;
-        row.appendChild(cursoCell);
-
         const instituicaoCell = document.createElement("td");
         instituicaoCell.textContent = nutri.instituicai_nutri;
         row.appendChild(instituicaoCell);
@@ -123,7 +142,7 @@ function populateTableNutri(nutris) {
         deleteCell.style.textAlign = 'center';
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "Excluir";
-        deleteButton.onclick = () => deleteUser(nutri.id_nutri);
+        deleteButton.onclick = () => deletarNutri(nutri.id_nutri);
         deleteCell.appendChild(deleteButton);
         row.appendChild(deleteCell);    
 

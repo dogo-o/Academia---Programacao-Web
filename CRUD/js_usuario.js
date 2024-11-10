@@ -2,6 +2,7 @@ const botoes = document.querySelectorAll('#btn_usuario, #btn_nutri, #btn_treinad
 const cruds = document.querySelectorAll('#crud_usuario, #crud_nutri, #crud_treinador');
 const forms = document.querySelectorAll('#formulario_usuario, #formulario_nutricionista, #formulario_treinador')
 
+console.log('oi')
 
 function aplicarEstiloAtivo(botao) {
     const idBotao = document.getElementById(botao);
@@ -85,7 +86,7 @@ function validateForm(){
 
 //fetch - formulario
 
-document.getElementById('cadastro_usuario').addEventListener('submit', function(event) {
+document.getElementById('cadastro_usuario').addEventListener('submit', function (event) {
     event.preventDefault();
 
     if(validateForm()){
@@ -120,54 +121,77 @@ function clearForm(){
     }
 }
 
+function deletar(id_usuario) {
+    let ctz = confirm('Tem certeza que deseja excluir?')
+    if(ctz){
+    fetch('excluir.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ id_usuario })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            lerUsuarios();
+        } else {
+            alert("Erro ao excluir usuário!");
+        }
+    })
+    .catch(error => console.log('Erro ao excluir usuário: ' + error));
+}
+}
 // fetch - READ
-fetch('ler_usuarios.php') // -> requisicao GET
+function lerUsuarios(){
+    fetch('ler_usuarios.php') // -> requisicao GET
     .then(response => response.json())
     .then(data => {
         populateTableUsuario(data);
     })
     .catch(error => console.error("Erro na requisição:", error));
-
+}
+lerUsuarios()
 
 function populateTableUsuario(users) {
     const tableBody = document.querySelector("#table_usuario tbody");
     tableBody.innerHTML = "";
-
+    
     for (const user of users) {
         const row = document.createElement("tr");
-
+        
         const idCell = document.createElement("td");
         idCell.textContent = user["id_usuario"];
         row.appendChild(idCell);
-
+        
         const nameCell = document.createElement("td");
         nameCell.textContent = user['nome_usuario']; 
         row.appendChild(nameCell);
-
+        
         const emailCell = document.createElement("td");
         emailCell.textContent = user.email_usuario;
         row.appendChild(emailCell);
-
+        
         const cpfCell = document.createElement("td");
         cpfCell.textContent = user.CPF_usuario;
         row.appendChild(cpfCell);
-
+        
         const nascimentoCell = document.createElement("td");
         nascimentoCell.textContent = user.data_nascimento_usuario;
         row.appendChild(nascimentoCell);
-
+        
         const generoCell = document.createElement("td");
         generoCell.textContent = user.genero_usuario;
         row.appendChild(generoCell);
-
+        
         const deleteCell = document.createElement("td");
         deleteCell.style.textAlign = 'center';
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "Excluir";
-        deleteButton.onclick = () => deleteUser(user.id_usuario);
+        deleteButton.onclick = () => deletar(user.id_usuario);
         deleteCell.appendChild(deleteButton);
         row.appendChild(deleteCell);    
-
+        
         const editCell = document.createElement("td");
         editCell.style.textAlign = 'center';
         const editButton = document.createElement("button");
@@ -175,11 +199,10 @@ function populateTableUsuario(users) {
         editButton.onclick = () => editUser(user.id_usuario);
         editCell.appendChild(editButton);
         row.appendChild(editCell);
-
+        
         tableBody.appendChild(row);
     }
 }
-
 
 
 // botao select user
