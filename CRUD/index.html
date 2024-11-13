@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fit Connect - Treinos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Fit Connect</h1>
+
+        <!-- Formulário para adicionar/editar treinos -->
+        <div id="treino-form">
+            <input type="hidden" id="treino-id">
+            <label>Usuário: <input type="text" id="usuario"></label>
+            <label>Exercício: <input type="text" id="exercicio"></label>
+            <label>Repetições: <input type="text" id="repeticoes"></label>
+            <button onclick="salvarTreino()">Salvar Treino</button>
+        </div>
+
+        <!-- Tabela para listar treinos -->
+        <h2>Lista de Treinos</h2>
+        <table id="treinos">
+            <thead>
+                <tr>
+                    <th>Usuário</th>
+                    <th>Exercício</th>
+                    <th>Repetições</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Os treinos serão listados aqui -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
