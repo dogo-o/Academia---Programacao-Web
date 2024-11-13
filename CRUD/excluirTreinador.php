@@ -6,11 +6,11 @@
     }
     
     $data = json_decode(file_get_contents('php://input'), true);
-    $id_nutri = $data['id_nutri'];
+    $id_treinador = $data['id_treinador'];
 
-    $sql = 'DELETE FROM academia.nutricionistas WHERE id_nutri = ?';
+    $sql = 'DELETE FROM academia.treinadores WHERE id_treinador = ?';
     $stmt = $conexao->prepare($sql);
-    $stmt->bind_param('i',$id_nutri);
+    $stmt->bind_param('i',$id_treinador);
     if ($stmt->execute()) {
         echo json_encode(['success' => true]);
     } else {

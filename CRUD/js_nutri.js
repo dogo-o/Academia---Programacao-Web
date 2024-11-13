@@ -44,7 +44,7 @@ document.getElementById('cadastro_nutri').addEventListener('submit', function(ev
     
     const formData = new FormData(this); // referencia o formulario atual
     
-    fetch('cadastrar_nutricionista.php', {  
+    fetch(formActionUrl2, {  
         method: 'POST',
         body: formData
     })
@@ -94,6 +94,47 @@ fetch('ler_nutri.php') // -> requisicao GET
     .catch(error => console.error("Erro na requisição:", error));
 }
 lerNutri()
+
+function lerNutri2(id_nutri){
+    fetch('editarNutri.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ id_nutri })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data.success){
+        populateFormNutri(data.data)
+        }
+    })
+    .catch(error => console.error("Erro na requisição: ", error))
+
+}
+
+function populateFormNutri(data){
+    mostrarForm('formulario_nutricionista')
+    document.getElementById("id_nutri").value = data.id_nutri;
+    document.getElementById("nome_nutri").value = data.nome_nutri;
+    document.getElementById("email_nutri").value = data.email_nutri;
+    document.getElementById("cpf_nutri").value = data.CPF_nutri;
+    document.getElementById("telefone_nutri").value = data.telefone_nutri;
+    document.getElementById("nascimento_nutri").value = data.data_nascimento_nutri;
+    document.getElementById("genero_nutri").value = data.genero_nutri;
+    document.getElementById("curso_nutri").value = data.curso_superior_nutri;
+    document.getElementById("instituicao_nutri").value = data.instituicai_nutri;
+    document.getElementById("crn").value = data.crn;
+    document.getElementById('btn_adicionar_nutri').style.display = 'none'
+    document.getElementById('btn_editar_nutri').style.display = 'block'
+    const elementos = document.getElementsByClassName('aaaaativo');
+    for (let i of elementos) {
+        i.style.display = 'none';
+    }
+    document.getElementById('senha_nutri').removeAttribute('required');
+    document.getElementById('responseMessage').textContent = ''
+    
+}
 
 function populateTableNutri(nutris) {
     const tableBody = document.querySelector("#table_nutri tbody");
@@ -150,10 +191,19 @@ function populateTableNutri(nutris) {
         editCell.style.textAlign = 'center';
         const editButton = document.createElement("button");
         editButton.textContent = "Editar";
-        editButton.onclick = () => editUser(nutri.id_nutri);
+        editButton.onclick = () => lerNutri2(nutri.id_nutri);
         editCell.appendChild(editButton);
         row.appendChild(editCell);
 
         tableBody.appendChild(row);
     }
 }
+
+// form enviar
+
+let formActionUrl2 = ''
+document.getElementById('btn_adicionar_nutri').addEventListener('click', function () {
+    formActionUrl2 = 'cadastrar_nutricionista.php';});
+
+document.getElementById('btn_editar_nutri').addEventListener('click', function () {
+    formActionUrl2 = 'editarNutri2.php';});

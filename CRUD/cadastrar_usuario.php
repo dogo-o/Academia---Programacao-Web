@@ -16,7 +16,7 @@ $stmt_cpf->bind_param('s', $cpf_usuario);
 $stmt_cpf->execute();
 $result_cpf = $stmt_cpf->get_result();
 
-$sql_verify_email = 'SELECT email_usuario FROM academia.usuarios WHERE email_usuario = ?';
+$sql_verify_email = 'SELECT email_usuario FROM academia.usuarios WHERE email_usuario = ? LIMIT 1';
 $stmt_email = $conexao->prepare($sql_verify_email);
 $stmt_email->bind_param('s', $email_usuario);
 $stmt_email->execute();

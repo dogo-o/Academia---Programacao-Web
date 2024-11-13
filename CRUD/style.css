@@ -201,8 +201,8 @@ body {
 
 #table_crud_usuario, #table_crud_nutri, #table_crud_treinador{
     height: auto; 
-    min-height: 400px; 
-    max-height: 600px; 
+    min-height: 40vh; 
+    max-height: 65vh; 
     overflow-y: auto; 
     color: black;
     background-color: rgb(216, 216, 216);
