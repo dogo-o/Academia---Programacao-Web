@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitConnect</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="div_img_logo">
+        <img src="logo.png" alt="logo">
+    </div>
+    <header>
+        <h1>Área do Treinador - Treinos</h1>
+    </header>
+    <main>
+        <section class="form-section">
+            <h2>Cadastrar Treino</h2>
+            <form id="treinoForm">
+                <input type="hidden" id="treinoId">
+                <label>Categoria: <input type="text" id="categoria"></label>
+                <label>Exercício: <input type="text" id="exercicio"></label>
+                <label>Reps: <input type="text" id="reps"></label>
+                <label>Kg: <input type="number" id="kg"></label>
+                <label>Foco: <input type="text" id="foco"></label>
+                <label>Observações: <input type="text" id="observacoes"></label>
+                <button type="button" onclick="salvarTreino()">Salvar</button>
+            </form>
+        </section>
+        <section class="list-section">
+            <h2>Treinos Cadastrados</h2>
+            <table id="treinoTable">
+                <thead>
+                    <tr>
+                        <th>Categoria</th>
+                        <th>Exercício</th>
+                        <th>Reps</th>
+                        <th>Kg</th>
+                        <th>Foco</th>
+                        <th>Observações</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script src="treino.js"></script>
+</body>
+</html>
