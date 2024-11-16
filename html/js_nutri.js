@@ -66,7 +66,7 @@ document.getElementById('cadastro_nutri').addEventListener('submit', function(ev
 function deletarNutri(id_nutri) {
     let ctz = confirm('Tem certeza que deseja excluir?')
     if(ctz){
-    fetch('excluirNutri.php', {
+    fetch('./PHP/excluirNutri.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -86,7 +86,7 @@ function deletarNutri(id_nutri) {
 }
 
 function lerNutri(){
-fetch('ler_nutri.php') // -> requisicao GET
+fetch('./PHP/ler_nutri.php') // -> requisicao GET
     .then(response => response.json())
     .then(data => {
         populateTableNutri(data);
@@ -96,7 +96,7 @@ fetch('ler_nutri.php') // -> requisicao GET
 lerNutri()
 
 function lerNutri2(id_nutri){
-    fetch('editarNutri.php', {
+    fetch('./PHP/editarNutri.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -203,7 +203,7 @@ function populateTableNutri(nutris) {
 
 let formActionUrl2 = ''
 document.getElementById('btn_adicionar_nutri').addEventListener('click', function () {
-    formActionUrl2 = 'cadastrar_nutricionista.php';});
+    formActionUrl2 = './PHP/cadastrar_nutricionista.php';});
 
 document.getElementById('btn_editar_nutri').addEventListener('click', function () {
-    formActionUrl2 = 'editarNutri2.php';});
+    formActionUrl2 = './PHP/editarNutri2.php';});

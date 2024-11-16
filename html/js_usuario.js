@@ -138,7 +138,7 @@ function clearForm(){
 function deletar(id_usuario) {
     let ctz = confirm('Tem certeza que deseja excluir?')
     if(ctz){
-        fetch('excluir.php', {
+        fetch('./PHP/excluir.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -158,7 +158,7 @@ function deletar(id_usuario) {
 }
 // fetch - READ
 function lerUsuarios(){
-    fetch('ler_usuarios.php') // -> requisicao GET
+    fetch('./PHP/ler_usuarios.php') // -> requisicao GET
     .then(response => response.json())
     .then(data => {
         populateTableUsuario(data);
@@ -168,7 +168,7 @@ function lerUsuarios(){
 lerUsuarios()
 
 function lerUsuarios2(id_usuario){
-    fetch('editarUsuario.php', {
+    fetch('./PHP/editarUsuario.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -294,7 +294,7 @@ document.getElementById('btn_voltar_form_treinador').addEventListener('click', f
 
 let formActionUrl = ''
 document.getElementById('btn_adicionar_usuario').addEventListener('click', function () {
-    formActionUrl = 'cadastrar_usuario.php';});
+    formActionUrl = './PHP/cadastrar_usuario.php';});
 
 document.getElementById('btn_editar_usuario').addEventListener('click', function () {
-    formActionUrl = 'editarUsuario2.php';});
+    formActionUrl = './PHP/editarUsuario2.php';});

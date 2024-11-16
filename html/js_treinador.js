@@ -66,7 +66,7 @@ document.getElementById('cadastro_treinador').addEventListener('submit', functio
 function deletarTreinador(id_treinador) {
     let ctz = confirm('Tem certeza que deseja excluir?')
     if(ctz){
-    fetch('excluirTreinador.php', {
+    fetch('./PHP/excluirTreinador.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -86,7 +86,7 @@ function deletarTreinador(id_treinador) {
 }
 
 function lerTreinador(){
-fetch('ler_treinador.php') // -> requisicao GET
+fetch('./PHP/ler_treinador.php') // -> requisicao GET
     .then(response => response.json())
     .then(data => {
         populateTableTreinador(data);
@@ -96,7 +96,7 @@ fetch('ler_treinador.php') // -> requisicao GET
 lerTreinador()
 
 function lertreinador2(id_treinador){
-    fetch('editartreinador.php', {
+    fetch('./PHP/editartreinador.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -201,7 +201,7 @@ function populateTableTreinador(treinadores) {
 
 let formActionUrl3 = ''
 document.getElementById('btn_adicionar_treinador').addEventListener('click', function () {
-    formActionUrl3 = 'cadastrar_treinador.php';});
+    formActionUrl3 = './PHP/cadastrar_treinador.php';});
 
 document.getElementById('btn_editar_treinador').addEventListener('click', function () {
-    formActionUrl3 = 'editartreinador2.php';});
+    formActionUrl3 = './PHP/editartreinador2.php';});
