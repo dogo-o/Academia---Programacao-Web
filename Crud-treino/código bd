@@ -1,0 +1,15 @@
+CREATE DATABASE fitconnect;
+
+USE fitconnect;
+
+CREATE TABLE treinos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    categoria VARCHAR(50) NOT NULL,
+    exercicio VARCHAR(100) NOT NULL,
+    reps VARCHAR(10) NOT NULL,
+    kg INT NOT NULL,
+    foco VARCHAR(50) NOT NULL,
+    observacoes VARCHAR(255) DEFAULT NULL
+);
+
+SELECT * FROM treinos;
